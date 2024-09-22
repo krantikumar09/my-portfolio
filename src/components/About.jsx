@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { assets } from "../assets/assets";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "./SectionTitle";
 
 const About = () => {
 

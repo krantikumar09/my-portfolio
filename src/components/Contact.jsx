@@ -1,5 +1,5 @@
 import React from "react";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "./SectionTitle";
 
 const Contact = () => {
   return (
@@ -29,7 +29,9 @@ const Contact = () => {
           required
         ></textarea>
 
-        <button className="btn text-white bg-green border-none outline-none hover:bg-greenHover">Send Message</button>
+        <button className="btn text-white bg-green border-none outline-none hover:bg-greenHover">
+          Send Message
+        </button>
       </form>
     </section>
   );

@@ -1,5 +1,5 @@
 import ProjectItem from "./ProjectItem";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "./SectionTitle";
 
 const Projects = () => {
   return (
