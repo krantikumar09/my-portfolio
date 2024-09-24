@@ -129,7 +129,7 @@ const Hero = () => {
           </p>
 
           <div className="flex gap-4 mt-6">
-            <a href="/public/My Resume.pdf" download="krantikumar_cv.pdf">
+            <a href="/public/My_Resume.pdf" download="krantikumar_cv.pdf">
               <button className="btn cursor-pointer bg-green text-white py-2 px-4 border-none outline-none hover:bg-greenHover">
                 Download CV
               </button>
