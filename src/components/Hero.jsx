@@ -129,7 +129,7 @@ const Hero = () => {
           </p>
 
           <div className="flex gap-4 mt-6">
-            <a href="/public/My_Resume.pdf" download="krantikumar_cv.pdf">
+            <a href="/My_Resume.pdf" download="krantikumar_cv.pdf">
               <button className="btn cursor-pointer bg-green text-white py-2 px-4 border-none outline-none hover:bg-greenHover">
                 Download CV
               </button>
@@ -177,14 +177,35 @@ const Hero = () => {
 
         {/* social links */}
         <div ref={socialRef} className="flex items-center gap-6 mt-20">
-          <a className="hover:-translate-y-1 transition-all" href="https://instagram.com" target="_blank">
-            <FontAwesomeIcon icon={faInstagram} className="text-priText text-2xl"/>
+          <a
+            className="hover:-translate-y-1 transition-all"
+            href="https://instagram.com"
+            target="_blank"
+          >
+            <FontAwesomeIcon
+              icon={faInstagram}
+              className="text-priText text-2xl"
+            />
           </a>
-          <a className="hover:-translate-y-1 transition-all" href="https://linkedin.com" target="_blank">
-            <FontAwesomeIcon icon={faLinkedin} className="text-priText text-2xl"/>
+          <a
+            className="hover:-translate-y-1 transition-all"
+            href="https://linkedin.com"
+            target="_blank"
+          >
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              className="text-priText text-2xl"
+            />
           </a>
-          <a className="hover:-translate-y-1 transition-all" href="https://github.com/krantikumar09" target="_blank">
-            <FontAwesomeIcon icon={faGithub} className="text-priText text-2xl"/>
+          <a
+            className="hover:-translate-y-1 transition-all"
+            href="https://github.com/krantikumar09"
+            target="_blank"
+          >
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="text-priText text-2xl"
+            />
           </a>
         </div>
       </div>
