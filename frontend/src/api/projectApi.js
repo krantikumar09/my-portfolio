@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/project/get";
+const api_url = import.meta.env.VITE_API_URL;
 
 // get all projects
 export const getProjects = async () => {
-  const res = await axios.get(API_URL);
+  const res = await axios.get(api_url);
   return res.data;
 };
