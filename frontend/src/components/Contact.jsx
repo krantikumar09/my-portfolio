@@ -3,7 +3,7 @@ import SectionTitle from "./SectionTitle";
 
 const Contact = () => {
   return (
-    <section id="contact" className="mt-32">
+    <section id="contact" className="mt-32 h-[72vh]">
       <SectionTitle title={"Contact Me"} />
 
       <form action="#" className="flex flex-col gap-4">

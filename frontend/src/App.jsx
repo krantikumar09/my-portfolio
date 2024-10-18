@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex justify-between gap-2 flex-col sm:flex-row">
+      <div className="flex justify-between items-center gap-2 flex-col sm:flex-row">
         {/* Fixed Left Side */}
         <div className={`basis-1/2 ${isProjectsPage ? "hidden sm:block" : ""}`}>
           <Hero />
