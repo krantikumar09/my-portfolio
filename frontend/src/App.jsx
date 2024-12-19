@@ -4,7 +4,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
 import NotFound from "./pages/NotFound";
-import "./index.css";
+import "./output.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   const location = useLocation();
