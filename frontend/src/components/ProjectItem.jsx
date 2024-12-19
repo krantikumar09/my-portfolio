@@ -71,7 +71,7 @@ const ProjectItem = ({ limit }) => {
             >
               <a
                 className="flex items-start flex-col md:flex-row gap-4"
-                href={project.url}
+                href={project.liveLink}
                 target="_blank"
               >
                 <div className="w-[120px] h-[80px]">
