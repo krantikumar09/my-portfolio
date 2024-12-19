@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./components/Login";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const backendUrl = import.meta.env.VITE_API_URL;
 
