@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -6,8 +6,10 @@ const projectSchema = new mongoose.Schema({
   image: { type: String, required: true },
   liveLink: { type: String, required: true },
   githubRepo: { type: String },
+  tags: { type: Array },
   featured: { type: Boolean },
 });
 
 const Project = mongoose.model("Project", projectSchema);
-module.exports = Project;
+
+export default Project;

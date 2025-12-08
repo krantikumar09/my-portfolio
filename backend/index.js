@@ -1,31 +1,28 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const connectDB = require("./config/db");
-const projectRoute = require("./routes/projectRoute");
-const adminRoute = require("./routes/adminRoute");
-const connectCloudinary = require("./config/cloudinary");
+import dotenv from "dotenv";
+import e from "express";
+import cors from "cors";
+import { connectDB } from "./config/db.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import projectsRoutes from "./routes/projectsRoutes.js";
+dotenv.config();
 
-const app = express();
+const app = e();
+
 const PORT = process.env.PORT || 5100;
 
+// Middleware
+app.use(e.json());
 app.use(cors());
-app.use(express.json());
-
-// connect to db
 connectDB();
-// connect cloudinary
-connectCloudinary();
 
-app.get("/", (req, res) => {
-  res.send("Server is running...");
-});
+// Routes
+app.use("/api/auth", adminRoutes);
+app.use("/api/project", projectsRoutes);
 
-// routes
-app.use("/api/project", projectRoute);
-app.use("/api/user", adminRoute);
+app.get('/', (req, res) => {
+  res.send("API Working...");
+})
 
-// start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+  console.log(`Server is running on PORT: http://localhost:${PORT}`)
+})

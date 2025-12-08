@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 // admin login
-const adminLogin = async (req, res) => {
+export const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -9,10 +9,7 @@ const adminLogin = async (req, res) => {
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
-      const token = jwt.sign(
-        { email, password },
-        process.env.JWT_SECRET
-      );
+      const token = jwt.sign({ email, password }, process.env.JWT_SECRET);
       res.json({ success: true, token, message: "Admin logged in!" });
     } else {
       res.json({ success: false, message: "Invalid credentials!" });
@@ -22,5 +19,3 @@ const adminLogin = async (req, res) => {
     res.json({ success: false, message: "Something went wrong!" });
   }
 };
-
-module.exports = { adminLogin }
