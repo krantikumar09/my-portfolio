@@ -46,12 +46,20 @@ export const createProject = async (req, res) => {
 
     fs.unlinkSync(image.path);
 
+    let parsedTags = [];
+    try {
+      parsedTags = JSON.parse(tags);
+    } catch (e) {
+      // Fallback if it's sent as a plain space-separated string
+      parsedTags = tags ? tags.split(" ") : [];
+    }
+
     const projectData = {
       title,
       description,
       liveLink,
       githubRepo,
-      tags,
+      tags: parsedTags, // stored as ['React', 'Node']
       featured: featured === "true" ? true : false,
       image: imageUrl.secure_url,
     };
@@ -144,12 +152,19 @@ export const updateProject = async (req, res) => {
       }
     }
 
+    let parsedTags = [];
+    try {
+      parsedTags = JSON.parse(tags);
+    } catch (e) {
+      parsedTags = tags ? tags.split(" ") : [];
+    }
+
     const updateData = {
       title,
       description,
       liveLink,
       githubRepo,
-      tags,
+      tags: parsedTags,
       featured: featured === "true", // Convert string 'true'/'false' to boolean
       image: imageUrl,
     };
@@ -204,6 +219,24 @@ export const deleteProject = async (req, res) => {
       .json({ success: true, message: "Project deleted successfully." });
   } catch (error) {
     console.log("delete project error: ", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// Get Project details
+export const getProjectDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const project = await Project.findById(id);
+    if (!project)
+      return res
+        .status(404)
+        .json({ success: false, message: "Project not found!" });
+
+    return res.status(201).json({ success: true, project });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };

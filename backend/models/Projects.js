@@ -6,7 +6,10 @@ const projectSchema = new mongoose.Schema({
   image: { type: String, required: true },
   liveLink: { type: String, required: true },
   githubRepo: { type: String },
-  tags: { type: Array },
+  tags: {
+    type: [String],
+    default: [],
+  },
   featured: { type: Boolean },
 });
 

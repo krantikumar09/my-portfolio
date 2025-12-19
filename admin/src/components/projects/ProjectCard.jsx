@@ -35,12 +35,6 @@ const ProjectCard = ({ key, project }) => {
       alert("Failed to delete project.");
     }
   };
-  
-  const rawTagString =
-    project.tags && project.tags.length > 0 ? project.tags[0] : "";
-  const processedTags = rawTagString
-    .split(" ")
-    .filter((tag) => tag.trim() !== "");
 
 
   return (
@@ -64,7 +58,7 @@ const ProjectCard = ({ key, project }) => {
         <p className="text-sm text-gray-600 mb-4">{project.description}</p>
 
         <div className="flex flex-wrap gap-2">
-          {processedTags.map((tag, index) => (
+          {project.tags.map((tag, index) => (
             <p
               key={index}
               className="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full"

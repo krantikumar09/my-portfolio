@@ -4,6 +4,7 @@ import {
   deleteProject,
   getAllProjects,
   getFeaturedProjects,
+  getProjectDetails,
   updateProject,
 } from "../controllers/projectController.js";
 import authMiddleware from "../middleware/adminAuth.js";
@@ -26,5 +27,6 @@ projectRoutes.put(
   updateProject
 );
 projectRoutes.delete("/delete/:id", authMiddleware, deleteProject);
+projectRoutes.get("/:id", getProjectDetails);
 
 export default projectRoutes;

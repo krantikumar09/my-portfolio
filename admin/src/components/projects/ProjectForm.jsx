@@ -26,7 +26,7 @@ const ProjectForm = ({ initialData, isEditMode = false, children }) => {
   // Ref to directly access the file input element for image submission
   const imageInputRef = useRef(null);
 
-  const defaultTags = initialData?.tags.join(" ") || "";
+  const defaultTags = initialData?.tags.join(", ") || "";
 
   const {
     register,
@@ -50,23 +50,27 @@ const ProjectForm = ({ initialData, isEditMode = false, children }) => {
   });
 
   const onSubmit = async (data) => {
-    // 1. Prepare FormData for file and text fields
     const formData = new FormData();
-
     const imageFile = imageInputRef.current?.files[0];
-
+  
     if (imageFile) {
       formData.append("image", imageFile);
     } else if (isEditMode && initialData?.image) {
       formData.append("existingImage", initialData.image);
     }
-
-    const tagsArray = data.tags.split(" ").filter((tag) => tag.trim() !== "");
-
-    // Append fields to FormData
+  
+    // Convert the space-separated string from the input into a clean array
+    const tagsArray = data.tags
+    .split(",") 
+    .map((tag) => tag.trim()) // Remove extra whitespace around the words
+    .filter((tag) => tag !== "");
+  
     formData.append("title", data.title);
     formData.append("description", data.description);
-    formData.append("tags", tagsArray.join(" "));
+    
+    // CRITICAL CHANGE: Send as a JSON string so the backend can parse it reliably
+    formData.append("tags", JSON.stringify(tagsArray)); 
+    
     formData.append("liveLink", data.liveLink);
     formData.append("githubRepo", data.githubRepo);
     formData.append("featured", String(data.featured));
@@ -141,11 +145,11 @@ const ProjectForm = ({ initialData, isEditMode = false, children }) => {
             <Textarea id="description" {...register("description")} />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="tags">Tags (Space Separated)</Label>
+            <Label htmlFor="tags">Tags (Comma Separated)</Label>
             <Input
               id="tags"
               {...register("tags")}
-              placeholder="react tailwind node"
+              placeholder="react, tailwind css, node js"
             />
           </div>
           <div className="grid gap-2">
